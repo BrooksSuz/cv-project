@@ -1,8 +1,19 @@
+import GeneralInfo from "./components/generalInfo";
+import Education from "./components/education";
+import Experience from "./components/experience";
+import "./styles/App.css";
 
-function App() {
+const App = () => {
   return (
-    <h1>Hello, world</h1>
+    <div>
+      <h1>CV-Project</h1>
+      <form>
+        <GeneralInfo></GeneralInfo>
+        <Education></Education>
+        <Experience></Experience>
+      </form>
+    </div>
   );
-}
+};
 
 export default App;
