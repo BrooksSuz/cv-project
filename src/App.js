@@ -14,25 +14,27 @@ class App extends Component {
         email: '',
         phone: '',
       },
-      eduction: {
+
+      education: {
         name: '',
         aos: '',
         dos: '',
       },
+
       experience: {
         name: '',
         position: '',
         tasks: '',
-        'amount-worked': {
-          beginning: '',
-          end: '',
-        },
+        beginning: '',
+        end: '',
       },
     };
   }
 
-  onFormSubmit = (e) => {
+  onSubmitForm = (e) => {
     e.preventDefault();
+    this.setState({
+    });
   };
 
   editCV = () => {
