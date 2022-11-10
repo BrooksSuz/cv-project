@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import GeneralInfo from "./components/generalInfo";
-import Education from "./components/education";
-import Experience from "./components/experience";
+import GeneralInfo from "./generalInfo/generalInfo";
+import Education from "./education/education";
+import Experience from "./experience/experience";
 import "./styles/App.css";
 
 class App extends Component {
@@ -9,25 +9,7 @@ class App extends Component {
     super();
 
     this.state = {
-      generalInfo: {
-        name: '',
-        email: '',
-        phone: '',
-      },
 
-      education: {
-        name: '',
-        aos: '',
-        dos: '',
-      },
-
-      experience: {
-        name: '',
-        position: '',
-        tasks: '',
-        beginning: '',
-        end: '',
-      },
     };
   }
 
@@ -48,9 +30,9 @@ class App extends Component {
         <h1>CV-Project</h1>
 
         <form onSubmit={this.onFormSubmit}>
-          <GeneralInfo></GeneralInfo>
-          <Education></Education>
-          <Experience></Experience>
+          <GeneralInfo />
+          <Education />
+          <Experience />
           <div className="submit-button-container">
             <button type="button" onClick={this.editCV}>Edit CV</button>
             <button type="submit">Submit CV</button>
@@ -58,6 +40,7 @@ class App extends Component {
         </form>
 
         <div className="cv-container"></div>
+        
       </div>
     );
   }
