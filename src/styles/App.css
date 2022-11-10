@@ -28,5 +28,10 @@ form {
 }
 
 form div {
-  border: 1px solid;
+  background-color: aquamarine;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: center;
 }
