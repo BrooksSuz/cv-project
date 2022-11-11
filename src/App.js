@@ -13,23 +13,6 @@ class App extends Component {
     };
   }
 
-  onSubmitForm = (e) => {
-    e.preventDefault();
-    if (!this.state.showComponent) {
-      this.setState({
-        showComponent: true,
-      });
-    } else if (this.state.showComponent) {
-      this.setState({
-        showComponent: false,
-      });
-    }
-  };
-
-  editCV = () => {
-
-  };
-
   render() {
     return (
       <div className="app-container">
@@ -40,10 +23,6 @@ class App extends Component {
           <AddGeneralInfo />
           <AddEducation />
           <AddExperience />
-          <div className="submit-button-container">
-            <button type="button" onClick={this.editCV}>Edit CV</button>
-            <button type="submit" onClick={this.onSubmitForm}>Submit CV</button>
-          </div>
         </form>
 
       </div>
