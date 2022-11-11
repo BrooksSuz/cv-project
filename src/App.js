@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import GeneralInfo from "./generalInfo/generalInfo";
-import Education from "./education/education";
-import Experience from "./experience/experience";
+import AddGeneralInfo from "./components/generalInfo/AddGeneralInfo";
+import AddEducation from "./components/education/AddEducation";
+import AddExperience from "./components/experience/AddExperience";
 import "./styles/App.css";
 
 class App extends Component {
@@ -30,9 +30,9 @@ class App extends Component {
         <h1>CV-Project</h1>
 
         <form onSubmit={this.onFormSubmit}>
-          <GeneralInfo />
-          <Education />
-          <Experience />
+          <AddGeneralInfo />
+          <AddEducation />
+          <AddExperience />
           <div className="submit-button-container">
             <button type="button" onClick={this.editCV}>Edit CV</button>
             <button type="submit">Submit CV</button>
