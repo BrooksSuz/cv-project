@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DisplayEducation from "./DisplayEducation";
 
 class Education extends Component {
   constructor() {
@@ -8,6 +9,7 @@ class Education extends Component {
       name: '',
       aos: '',
       dos: '',
+      showComponent: false,
     }
   }
 
@@ -29,14 +31,28 @@ class Education extends Component {
     });
   };
 
+  onButtonClick = () => {
+    if (!this.state.showComponent) {
+      this.setState({
+        showComponent: true,
+      });
+    } else if (this.state.showComponent) {
+      this.setState({
+        showComponent: false,
+      });
+    }
+  };
+
   render() {
+    const { name, dos, aos, showComponent } = this.state;
+
     return (
       <div>
         <div className="school-name-container">
           <label htmlFor="school-name">School Name:</label>
           <input
           onChange={this.handleNameChange}
-          value={this.name}
+          value={name}
           type="text"
           id="school-name"
           name="school-name">
@@ -46,7 +62,7 @@ class Education extends Component {
           <label htmlFor="area-of-study">Area of Study:</label>
           <input
           onChange={this.handleAOSChange}
-          value={this.aos}
+          value={aos}
           type="text"
           id="area-of-study"
           name="area-of-study">
@@ -56,12 +72,21 @@ class Education extends Component {
           <label htmlFor="date-of-study">Date of Study:</label>
           <input
           onChange={this.handleDOSChange}
-          value={this.dos}
+          value={dos}
           type="date"
           id="date-of-study"
           name="date-of-study">
           </input>
         </div>
+        <button type="button" onClick={this.onButtonClick}>Submit</button>
+        {showComponent ?
+        <DisplayEducation
+          name={name}
+          aos={aos}
+          dos={dos}
+        /> :
+          null
+        }
       </div>
     );
   }

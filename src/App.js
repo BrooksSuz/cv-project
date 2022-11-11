@@ -9,14 +9,21 @@ class App extends Component {
     super();
 
     this.state = {
-
+      showComponent: false,
     };
   }
 
   onSubmitForm = (e) => {
     e.preventDefault();
-    this.setState({
-    });
+    if (!this.state.showComponent) {
+      this.setState({
+        showComponent: true,
+      });
+    } else if (this.state.showComponent) {
+      this.setState({
+        showComponent: false,
+      });
+    }
   };
 
   editCV = () => {
@@ -35,12 +42,10 @@ class App extends Component {
           <AddExperience />
           <div className="submit-button-container">
             <button type="button" onClick={this.editCV}>Edit CV</button>
-            <button type="submit">Submit CV</button>
+            <button type="submit" onClick={this.onSubmitForm}>Submit CV</button>
           </div>
         </form>
 
-        <div className="cv-container"></div>
-        
       </div>
     );
   }

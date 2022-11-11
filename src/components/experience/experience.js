@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DisplayExperience from "./DisplayExperience";
 
 class Experience extends Component {
   constructor() {
@@ -10,6 +11,7 @@ class Experience extends Component {
       tasks: '',
       beginning: '',
       end: '',
+      showComponent: false,
     };
   }
 
@@ -43,14 +45,27 @@ class Experience extends Component {
     });
   };
 
+  onButtonClick = () => {
+    if (!this.state.showComponent) {
+      this.setState({
+        showComponent: true,
+      });
+    } else if (this.state.showComponent) {
+      this.setState({
+        showComponent: false,
+      });
+    }
+  };
+
   render() {
+    const { name, position, tasks, beginning, end, showComponent } = this.state;
     return (
       <div className="experience-container">
         <div className="company-name-container">
           <label htmlFor="company-name">Company Name:</label>
           <input
           onChange={this.handleNameChange}
-          value={this.name}
+          value={name}
           type="text"
           id="company-name"
           name="company-name">
@@ -60,7 +75,7 @@ class Experience extends Component {
           <label htmlFor="position-title">Position Title:</label>
           <input
           onChange={this.handlePositionChange}
-          value={this.position}
+          value={position}
           type="text"
           id="position-title"
           name="position-title">
@@ -70,7 +85,7 @@ class Experience extends Component {
           <label htmlFor="main-tasks">Main Tasks:</label>
           <input
           onChange={this.handleTasksChange}
-          value={this.tasks}
+          value={tasks}
           type="text"
           id="main-tasks"
           name="main-tasks">
@@ -80,7 +95,7 @@ class Experience extends Component {
           <label htmlFor="beginning-date">Beginning Date:</label>
           <input
           onChange={this.handleBeginningDateChange}
-          value={this.beginning}
+          value={beginning}
           type="date"
           id="beginning-date"
           name="beginning-date">
@@ -88,12 +103,23 @@ class Experience extends Component {
           <label htmlFor="end-date">End Date:</label>
           <input
           onChange={this.handleEndDateChange}
-          value={this.end}
+          value={end}
           type="date"
           id="end-date"
           name="end-date">
           </input>
         </div>
+        <button type="button" onClick={this.onButtonClick}>Submit</button>
+        {showComponent ?
+        <DisplayExperience
+          name={name}
+          position={position}
+          tasks={tasks}
+          beginning={beginning}
+          end={end} 
+        /> :
+          null
+        }
       </div>
     );
   }

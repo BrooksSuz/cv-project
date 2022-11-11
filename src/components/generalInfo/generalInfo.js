@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DisplayGeneralInfo from "./DisplayGeneralInfo";
 
 class GeneralInfo extends Component {
   constructor() {
@@ -8,6 +9,7 @@ class GeneralInfo extends Component {
       name: '',
       email: '',
       phone: '',
+      showComponent: false,
     };
   }
 
@@ -29,14 +31,27 @@ class GeneralInfo extends Component {
     });
   };
 
+  onButtonClick = () => {
+    if (!this.state.showComponent) {
+      this.setState({
+        showComponent: true,
+      });
+    } else if (this.state.showComponent) {
+      this.setState({
+        showComponent: false,
+      });
+    }
+  };
+
   render() {
+    const { name, email, phone, showComponent } = this.state;
     return (
       <div className="general-info-container">
         <div className="user-name-container">
           <label htmlFor="user-name">Name:</label>
           <input
           onChange={this.handleNameChange}
-          value={this.name}
+          value={name}
           type="text"
           id="user-name"
           name="user-name">
@@ -46,7 +61,7 @@ class GeneralInfo extends Component {
           <label htmlFor="user-email">Email:</label>
           <input
           onChange={this.handleEmailChange}
-          value={this.email}
+          value={email}
           type="email"
           id="user-email"
           name="user-email">
@@ -56,12 +71,17 @@ class GeneralInfo extends Component {
           <label htmlFor="user-phone">Phone Number:</label>
           <input
           onChange={this.handlePhoneChange}
-          value={this.phone}
+          value={phone}
           type="text"
           id="user-phone"
           name="user-phone">
           </input>
         </div>
+        <button type="button" onClick={this.onButtonClick}>Submit</button>
+        {showComponent ?
+        <DisplayGeneralInfo name={name} email={email} phone={phone} /> : 
+        null
+        }
       </div>
     );
   }
